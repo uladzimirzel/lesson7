@@ -1,8 +1,10 @@
-FROM maven:3.8.3-openjdk-11-slim
-RUN apt update && apt upgrade -y
+FROM maven:latest
+RUN apt update -y
 RUN apt install git -y
-RUN apt install openjdk-11-jdk -y
+ENV CLONE_REP=/usr/app
+WORKDIR $CLONE_REP
 RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello
-WORKDIR ./boxfuse-sample-java-war-hello
-RUN mvn package
+ENV BUILD_REP=/usr/app/boxfuse-sample-java-war-hello
+WORKDIR $BUILD_REP
+RUN mvn clean package
 RUN cp -r target/hello-1.0.war /usr/local/tomcat/webapps

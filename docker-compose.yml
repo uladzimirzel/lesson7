@@ -1,0 +1,21 @@
+---
+version: '3'
+services:
+    package-maven:
+      build:
+          context: /home/test/
+          dockerfile: Dockerfile
+      volumes:
+          - build-maven:/usr/local/tomcat/webapp
+    start-tomcat:
+      image: tomcat:9-jre8-alpine
+      ports:
+        - 8080:8080
+      depends_on:
+        - package-maven
+      volumes:
+        - build-maven:/usr/local/tomcat/webapp
+
+volumes:
+  build-maven:
+...

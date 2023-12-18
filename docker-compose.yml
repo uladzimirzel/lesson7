@@ -1,13 +1,13 @@
 ---
 version: '3'
 services:
-    package-maven:
+   package-maven:
       build:
-          context: /home/docker-compose/
-          dockerfile: Dockerfile
+         context: .
+         dockerfile: Dockerfile
       volumes:
-          - build-maven:/usr/local/tomcat/webapp
-    start-tomcat:
+        - build-maven:/usr/local/tomcat/webapp
+   start-tomcat:
       image: tomcat:9-jre8-alpine
       ports:
         - 8080:8080

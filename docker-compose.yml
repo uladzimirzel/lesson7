@@ -6,7 +6,7 @@ services:
          context: .
          dockerfile: Dockerfile
       volumes:
-        - build-maven:/usr/local/tomcat/webapp
+        - build-maven:/usr/local/tomcat/webapps
    start-tomcat:
       image: tomcat:9-jre8-alpine
       ports:
@@ -14,7 +14,7 @@ services:
       depends_on:
         - package-maven
       volumes:
-        - build-maven:/usr/local/tomcat/webapp
+        - build-maven:/usr/local/tomcat/webapps
 
 volumes:
   build-maven:

@@ -1,8 +1,9 @@
-FROM tomcat:9-jdk11
-RUN apt update && apt upgrade -y
+FROM maven:3.8-jdk-11-slim as maven_builder
+RUN apt update -y
 RUN apt install git -y
-RUN apt install maven -y
 RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello
+
+FROM tomcat:9.0-alpine
 WORKDIR ./boxfuse-sample-java-war-hello
 RUN mvn clean package
 RUN cp -r target/hello-1.0.war /usr/local/tomcat/webapps

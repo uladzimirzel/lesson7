@@ -8,7 +8,7 @@ services:
       volumes:
         - build-maven:/usr/local/tomcat/webapps
    start-tomcat:
-      #image: tomcat:9.0-alpine
+      image: tomcat:9.0-alpine
       ports:
         - 8080:8080
       depends_on:

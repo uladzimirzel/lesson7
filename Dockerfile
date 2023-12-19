@@ -5,8 +5,8 @@ RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello
 WORKDIR ./boxfuse-sample-java-war-hello
 RUN mvn clean package
 
-FROM tomcat:9.0-alpine as production
-RUN cp -r target/hello-1.0.war /usr/local/tomcat/webapps
-ENV START_TOMCAT=/usr/local/tomcat/
-WORKDIR $START_TOMCAT
-RUN cp -r webapps.dist/* webapps
+FROM tomcat:9.0-alpine
+COPY --from=build target/hello-1.0.war /usr/local/tomcat/webapps
+#ENV START_TOMCAT=/usr/local/tomcat/
+#WORKDIR $START_TOMCAT
+#RUN cp -r webapps.dist/* webapps

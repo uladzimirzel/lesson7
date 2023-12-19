@@ -6,7 +6,6 @@ WORKDIR ./boxfuse-sample-java-war-hello
 RUN mvn clean package
 
 FROM tomcat:9.0-alpine as production
-WORKDIR ./boxfuse-sample-java-war-hello
 RUN cp -r target/hello-1.0.war /usr/local/tomcat/webapps
 ENV START_TOMCAT=/usr/local/tomcat/
 WORKDIR $START_TOMCAT

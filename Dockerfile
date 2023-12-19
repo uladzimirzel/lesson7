@@ -1,6 +1,6 @@
 FROM maven:3.9.5-eclipse-temurin-11-alpine as build
-RUN apt update -y
-RUN apt install git -y
+RUN sudo apt update -y
+RUN sudo apt install git -y
 RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello
 WORKDIR ./boxfuse-sample-java-war-hello
 RUN mvn clean package

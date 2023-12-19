@@ -5,7 +5,7 @@ RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello
 WORKDIR ./boxfuse-sample-java-war-hello
 RUN mvn clean package
 
-FROM tomcat:9.0-alpine
+FROM tomcat:9.0.84-jdk11-temurin-jammy
 WORKDIR /usr/local/tomcat
 RUN cp -r webapps.dist/* webapps
 

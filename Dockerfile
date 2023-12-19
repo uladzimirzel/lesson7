@@ -1,4 +1,4 @@
-FROM maven:3.8-jdk-11-slim as build
+FROM maven:3.5.3-jdk-8-alpine as build
 RUN apt update -y
 RUN apt install git -y
 RUN git clone https://github.com/boxfuse/boxfuse-sample-java-war-hello
